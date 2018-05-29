@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OnlineStore.Models;
+using OnlineStore.DBServices;
+using OnlineStore.Data;
 
 namespace OnlineStore.Controllers
 {
@@ -17,6 +19,8 @@ namespace OnlineStore.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private readonly CustomerDBService customerService = new CustomerDBService();
 
         public AccountController()
         {
@@ -155,6 +159,13 @@ namespace OnlineStore.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Customer newCustomer = new Customer()
+                    {
+                        UserId = user.Id
+                    };
+
+                    customerService.CreateCustomer(newCustomer);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

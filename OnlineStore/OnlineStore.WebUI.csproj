@@ -229,7 +229,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -284,6 +286,16 @@
     <EmbeddedResource Include="Migrations\201805202218430_InitialMigration.resx">
       <DependentUpon>201805202218430_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Data\OnlineStore.Data.csproj">
+      <Project>{148cd1c8-a638-43d3-b982-91acb908b030}</Project>
+      <Name>OnlineStore.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineStore.DBServices\OnlineStore.DBServices.csproj">
+      <Project>{964b5f7b-0e6c-4853-92f2-89f10a8c6898}</Project>
+      <Name>OnlineStore.DBServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
