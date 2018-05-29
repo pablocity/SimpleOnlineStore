@@ -14,6 +14,11 @@ namespace OnlineStore.DBServices
             return DB.Customers.Where(x => x.Id == id).FirstOrDefault();
         }
 
+        public Customer GetCutomerByUserGUID(string userGUID)
+        {
+            return DB.Customers.Where(x => x.UserId == userGUID).FirstOrDefault();
+        }
+
         public void CreateCustomer(Customer customer)
         {
             DB.Customers.Add(customer);

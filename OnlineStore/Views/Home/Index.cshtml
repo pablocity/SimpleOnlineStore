@@ -1,15 +1,34 @@
-﻿@{
+﻿@using OnlineStore.DBServices
+@using OnlineStore.Data
+
+@{
+    ProductDBService productService = new ProductDBService();
+    Product randomProduct = productService.GetRandomProduct();
+    IList<Product> products = productService.GetProductCollection().ToList();
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>@randomProduct.Name</h1>
+    <img class="lead" src='@Url.Content("~/Images/" + randomProduct.Name + ".png")' width="250" height="200"/>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+
+    @{
+        for (int i = 0; i < 3; i++)
+        {
+            <div class="col-md-4">
+                <h3>@products[i].Name</h3>
+                <fieldset>
+                    <img src='@Url.Content("~/Images/" + products[i].Name + ".png")' width="200" height="150" />
+                </fieldset>
+                <a style="margin-left: 25px; text-align: center" class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Dodaj do koszyka &raquo;</a>
+            </div>
+        }
+    }
+
+    @*<div class="col-md-4">
         <h2>Getting started</h2>
         <p>
             ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
@@ -27,5 +46,5 @@
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    </div>*@
 </div>

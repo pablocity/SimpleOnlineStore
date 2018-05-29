@@ -189,15 +189,17 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\OnlineStore\Controllers\ProductController.cs" />
+    <Compile Include="Areas\OnlineStore\OnlineStoreAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805202218430_InitialMigration.cs" />
-    <Compile Include="Migrations\201805202218430_InitialMigration.Designer.cs">
-      <DependentUpon>201805202218430_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201805291951197_AspIdentityError.cs" />
+    <Compile Include="Migrations\201805291951197_AspIdentityError.Designer.cs">
+      <DependentUpon>201805291951197_AspIdentityError.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -207,17 +209,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Leginsy Perspective Schild.jpg" />
+    <Content Include="App_Data\Shorty Am Besten Perspective.jpg" />
+    <Content Include="App_Data\T-Shirt Golden Schule.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Leginsy Perspective Schild.png" />
+    <Content Include="Images\Shorty Am Besten Perspective.png" />
+    <Content Include="Images\T-Shirt Golden Schule.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\OnlineStore\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -267,7 +276,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Areas\OnlineStore\Models\" />
+    <Folder Include="Areas\OnlineStore\Views\Product\" />
+    <Folder Include="Areas\OnlineStore\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -283,11 +294,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805202218430_InitialMigration.resx">
-      <DependentUpon>201805202218430_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Common\OnlineStore.Common.csproj">
+      <Project>{24f4096c-eb85-4b8c-99fc-68d919566acd}</Project>
+      <Name>OnlineStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineStore.Data\OnlineStore.Data.csproj">
       <Project>{148cd1c8-a638-43d3-b982-91acb908b030}</Project>
       <Name>OnlineStore.Data</Name>
@@ -296,6 +306,11 @@
       <Project>{964b5f7b-0e6c-4853-92f2-89f10a8c6898}</Project>
       <Name>OnlineStore.DBServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805291951197_AspIdentityError.resx">
+      <DependentUpon>201805291951197_AspIdentityError.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

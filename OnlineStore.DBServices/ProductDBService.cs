@@ -24,6 +24,15 @@ namespace OnlineStore.DBServices
             return DB.Products.ToList();
         }
 
+        public Product GetRandomProduct()
+        {
+            List<Product> products = GetProductCollection().ToList();
+
+            Random random = new Random();
+
+            return products[random.Next(0, products.Count)];
+        }
+
         public bool UpdateProduct(Product updated)
         {
             try
