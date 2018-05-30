@@ -189,7 +189,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\OnlineStore\Controllers\CartController.cs" />
     <Compile Include="Areas\OnlineStore\Controllers\ProductController.cs" />
+    <Compile Include="Areas\OnlineStore\Models\CartViewModel.cs" />
+    <Compile Include="Areas\OnlineStore\Models\ProductViewModel.cs" />
+    <Compile Include="Areas\OnlineStore\Models\ShoppingCart.cs" />
     <Compile Include="Areas\OnlineStore\OnlineStoreAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -227,6 +231,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\OnlineStore\Views\web.config" />
+    <Content Include="Areas\OnlineStore\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\OnlineStore\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\OnlineStore\Views\Cart\CartAll.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,9 +283,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\OnlineStore\Models\" />
     <Folder Include="Areas\OnlineStore\Views\Product\" />
-    <Folder Include="Areas\OnlineStore\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -19,6 +19,11 @@ namespace OnlineStore.DBServices
             return DB.Products.Where(x => x.Id == id).FirstOrDefault();
         }
 
+        public Product GetProductByName(string name)
+        {
+            return DB.Products.Where(x => x.Name == name).FirstOrDefault();
+        }
+
         public ICollection<Product> GetProductCollection()
         {
             return DB.Products.ToList();

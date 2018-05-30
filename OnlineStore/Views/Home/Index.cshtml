@@ -8,9 +8,14 @@
     ViewBag.Title = "Home Page";
 }
 
+@section scripts
+{
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+}
+
 <div class="jumbotron">
     <h1>@randomProduct.Name</h1>
-    <img class="lead" src='@Url.Content("~/Images/" + randomProduct.Name + ".png")' width="250" height="200"/>
+    <img class="lead" src='@Url.Content("~/Images/" + randomProduct.Name + ".png")' width="250" height="200" />
 </div>
 
 <div class="row">
@@ -23,28 +28,33 @@
                 <fieldset>
                     <img src='@Url.Content("~/Images/" + products[i].Name + ".png")' width="200" height="150" />
                 </fieldset>
-                <a style="margin-left: 25px; text-align: center" class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Dodaj do koszyka &raquo;</a>
+                <a style="margin-left: 25px; text-align: center" id="@products[i].Name" class="button btn btn-default">Dodaj do koszyka &raquo;</a>
+                <input type="number" class="@products[i].Name" />
             </div>
         }
     }
 
-    @*<div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>*@
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+    $(".button").click(function () {
+
+        let productName = this.id;
+
+        let element = document.getElementsByClassName(productName);
+        let amount = element[0].valueAsNumber;
+
+        let url = '@Url.Action("AddProduct", "Cart", new { name = "_name_", amount = "_count_" }, null)';
+        url = url.replace("_name_", productName);
+        url = url.replace("_count_", amount);
+        url = url.replace(";", "");
+        url = url.replace("amp", "");
+        console.log(url);
+        window.location.href = url;
+    })
+
+
+</script>
