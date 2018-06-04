@@ -65,20 +65,23 @@
         foreach (var item in Model)
         {
             totalPrice += item.Price * item.Quantity;
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price) zł
-                </td>
-                <td>
-                    @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price) zł
+        </td>
+        <td>
+            @Html.ActionLink("Usuń", "RemoveProduct", "Cart", new { id = item.Id, Area = "OnlineStore" }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Usuń wszystkie", "RemoveAllProducts", "Cart", new { id = item.Id, Area = "OnlineStore" }, null)
+        </td>
+    </tr>
         }
     }
 
@@ -92,3 +95,13 @@
 <div id="totalPrice">
     <input type="button" id="placeOrder" value="Złóż zamówienie" />
 </div>
+
+<script type="text/javascript">
+
+    $("#placeOrder").click(function () {
+        console.log("Place order");
+        let url = '@Url.Action("PlaceOrder", "Cart", new { Area = string.Empty})';
+        window.location.href = url;
+    })
+
+</script>

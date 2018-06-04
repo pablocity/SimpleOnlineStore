@@ -6,16 +6,21 @@ using System.Web.Mvc;
 using OnlineStore.DBServices;
 using OnlineStore.Data;
 using OnlineStore.Areas.OnlineStore.Models;
+using Microsoft.AspNet.Identity;
 
 namespace OnlineStore.Areas.OnlineStore.Controllers
 {
     public class CartController : Controller
     {
         readonly ProductDBService productService;
+        readonly CustomerDBService customerService;
+        readonly OrderDBService orderService;
 
         public CartController()
         {
             productService = new ProductDBService();
+            customerService = new CustomerDBService();
+            orderService = new OrderDBService();
         }
 
         // GET: OnlineStore/CartAll
@@ -42,12 +47,47 @@ namespace OnlineStore.Areas.OnlineStore.Controllers
 
         public ActionResult RemoveProduct(long id)
         {
-            Product toRemove = productService.GetProductById(id);
+            Product toRemove = ShoppingCart.GetCartItems(this.HttpContext).Where(x => x.Id == id).FirstOrDefault();
 
             if (toRemove != null)
                 ShoppingCart.Remove(toRemove, this.HttpContext);
 
             return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+        }
+
+        public ActionResult RemoveAllProducts(long id)
+        {
+            Product toRemove = ShoppingCart.GetCartItems(this.HttpContext).Where(x => x.Id == id).FirstOrDefault();
+
+            if (toRemove != null)
+                ShoppingCart.RemoveAll(toRemove, this.HttpContext);
+
+            return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+        }
+
+        [Authorize]
+        public ActionResult PlaceOrder()
+        {
+            Customer customer = customerService.GetCutomerByUserGUID(this.User.Identity.GetUserId());
+            ICollection<Product> products = ShoppingCart.GetCartItems(this.HttpContext);
+
+            if (products == null || products.Count <= 0)
+                return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+
+            if (customer != null)
+            {     
+                Order result = orderService.CreateOrder(customer.Id, products);
+
+                if (result == null)
+                    return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+
+                ShoppingCart.Empty(this.HttpContext);
+                return RedirectToAction("Index", "Home", new { Area = String.Empty });
+            }
+            else
+            {
+                return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+            }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
