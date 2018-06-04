@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OnlineStore.Common.Resources {
+namespace OnlineStore.Common.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace OnlineStore.Common.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Labels {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Labels() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace OnlineStore.Common.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OnlineStore.Common.Resources.Labels", typeof(Labels).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OnlineStore.Common.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,69 +57,6 @@ namespace OnlineStore.Common.Resources {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sklep.
-        /// </summary>
-        internal static string AppName {
-            get {
-                return ResourceManager.GetString("AppName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Koszyk.
-        /// </summary>
-        internal static string CartAll {
-            get {
-                return ResourceManager.GetString("CartAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2018 - Paweł Woliński.
-        /// </summary>
-        internal static string Copyrights {
-            get {
-                return ResourceManager.GetString("Copyrights", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nazwa.
-        /// </summary>
-        internal static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cena.
-        /// </summary>
-        internal static string Price {
-            get {
-                return ResourceManager.GetString("Price", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ilość.
-        /// </summary>
-        internal static string Quantity {
-            get {
-                return ResourceManager.GetString("Quantity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Całkowity koszt: .
-        /// </summary>
-        internal static string TotalPrice {
-            get {
-                return ResourceManager.GetString("TotalPrice", resourceCulture);
             }
         }
     }

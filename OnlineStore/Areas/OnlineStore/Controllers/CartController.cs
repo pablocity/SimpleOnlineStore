@@ -36,7 +36,33 @@ namespace OnlineStore.Areas.OnlineStore.Controllers
 
             ShoppingCart.AddToCart(product, this.HttpContext);
 
-            return RedirectToAction("CartAll", new { Area = "OnlineStore"});
+            //return RedirectToAction("CartAll", new { Area = "OnlineStore"});
+            return RedirectToAction("Index", "Home", new { Area = String.Empty });
+        }
+
+        public ActionResult RemoveProduct(long id)
+        {
+            Product toRemove = productService.GetProductById(id);
+
+            if (toRemove != null)
+                ShoppingCart.Remove(toRemove, this.HttpContext);
+
+            return RedirectToAction("CartAll", "Cart", new { Area = "OnlineStore" });
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult AddProductAjax(string name, string amount)
+        {
+            Product product = productService.GetProductByName(name);
+            if (product == null)
+                throw new NotImplementedException();
+
+            int.TryParse(amount, out int result);
+            product.Quantity = result;
+
+            ShoppingCart.AddToCart(product, this.HttpContext);
+
+            return new JsonResult();
         }
 
         // GET: OnlineStore/Cart/Create

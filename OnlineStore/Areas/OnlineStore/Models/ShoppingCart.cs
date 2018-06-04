@@ -13,9 +13,9 @@ namespace OnlineStore.Areas.OnlineStore.Models
 
         public static void AddToCart(Product toAdd, HttpContextBase context)
         {
-            ICollection<Product> cart;
+            ICollection<Product> cart = GetCartItems(context);
 
-            if (context.Session[CartSessionKey] is ICollection<Product>)
+            if (cart != null)
                 cart = context.Session[CartSessionKey] as ICollection<Product>;
             else
                 cart = new List<Product>();
@@ -26,6 +26,34 @@ namespace OnlineStore.Areas.OnlineStore.Models
                 cart.Add(toAdd);
 
             context.Session[CartSessionKey] = cart;
+        }
+
+        public static void Remove(Product toRemove, HttpContextBase context)
+        {
+            ICollection<Product> cart = GetCartItems(context);
+
+            if (cart != null)
+            {
+                if (toRemove.Quantity > 1)
+                {
+                    toRemove.Quantity--;
+
+                    cart.Where(x => x.Name == toRemove.Name).FirstOrDefault().Quantity = toRemove.Quantity;
+                }
+                else
+                {
+                    cart = cart.Where(x => x.Name == toRemove.Name).ToList();
+                }
+
+                context.Session[CartSessionKey] = cart;
+            }
+
+            return;
+        }
+
+        public static void RemoveAll(Product toRemove, HttpContextBase context)
+        {
+
         }
 
         public static ICollection<Product> GetCartItems(HttpContextBase context)

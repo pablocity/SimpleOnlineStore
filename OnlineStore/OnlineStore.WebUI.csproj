@@ -213,18 +213,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Leginsy Perspective Schild.jpg" />
-    <Content Include="App_Data\Shorty Am Besten Perspective.jpg" />
-    <Content Include="App_Data\T-Shirt Golden Schule.png" />
+    <Content Include="App_Data\DJI Inspire 3.png" />
+    <Content Include="App_Data\DJI Mavic Pro.png" />
+    <Content Include="App_Data\DJI Phantom 4.png" />
+    <Content Include="App_Data\DJI Phantom Obsidian.png" />
+    <Content Include="App_Data\drone_wallpaper.jpg" />
+    <Content Include="App_Data\light-grey-terrazzo.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Leginsy Perspective Schild.png" />
-    <Content Include="Images\Shorty Am Besten Perspective.png" />
-    <Content Include="Images\T-Shirt Golden Schule.png" />
+    <Content Include="Images\DJI Inspire 3.png" />
+    <Content Include="Images\DJI Mavic Pro.png" />
+    <Content Include="Images\DJI Phantom 4.png" />
+    <Content Include="Images\DJI Phantom Obsidian.png" />
+    <Content Include="Images\drone_wallpaper.jpg" />
+    <Content Include="Images\light-grey-terrazzo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

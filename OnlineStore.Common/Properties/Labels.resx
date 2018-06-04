@@ -117,14 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="legginsy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>legginsy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AppName" xml:space="preserve">
+    <value>Sklep</value>
   </data>
-  <data name="shorty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>shorty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CartAll" xml:space="preserve">
+    <value>Koszyk</value>
   </data>
-  <data name="t_shirt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>t-shirt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Copyrights" xml:space="preserve">
+    <value>Paweł Woliński</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nazwa</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Cena</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Ilość</value>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>Całkowity koszt: </value>
   </data>
 </root>

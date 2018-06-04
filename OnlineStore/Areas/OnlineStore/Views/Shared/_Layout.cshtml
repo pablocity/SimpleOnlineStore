@@ -3,33 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - @OnlineStore.Common.Properties.Labels.AppName</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
-<body>
+<body style='background-image: url("../../Images/light-grey-terrazzo.png")'>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container" style="position: relative;">
             <div class="navbar-header">
+                <div class="navbar-header" style="color: whitesmoke; text-align: center; position:absolute; top: 15px; width: 100px; right: 100%;" id="timer"></div>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(OnlineStore.Common.Properties.Labels.AppName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div style="display: flex; flex-direction: row; flex-basis: 100%; align-content: flex-end;" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Koszyk", "CartAll", "Cart", new { Area = "OnlineStore" }, null)</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - @OnlineStore.Common.Properties.Labels.Copyrights</p>
         </footer>
     </div>
 
@@ -38,3 +43,27 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+<script type="text/javascript">
+
+    function CustomTimer() {
+
+        let myTimer = document.getElementById("timer");
+        let time = new Date();
+        //myTimer.innerHTML = `${time.getHours()} : ${time.getMinutes()} : ${time.getSeconds()}`;
+
+        let timeTable = [time.getHours(), time.getMinutes(), time.getSeconds()];
+
+        for (let i = 0; i < timeTable.length; i++) {
+            if (parseInt( timeTable[i]) < 10)
+                timeTable[i] = `0${timeTable[i]}`;
+        }
+
+        myTimer.innerHTML = `${timeTable[0]} : ${timeTable[1]} : ${timeTable[2]}`;
+
+    }
+
+    setInterval(CustomTimer, 1000);
+
+</script>
