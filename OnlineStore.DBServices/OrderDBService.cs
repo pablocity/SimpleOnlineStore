@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OnlineStore.Data;
+using System.Data.Entity;
 
 namespace OnlineStore.DBServices
 {
@@ -40,7 +41,8 @@ namespace OnlineStore.DBServices
 
         public ICollection<Order> GetOrdersByCustomer(long customerId)
         {
-            return null;
+            return DB.Orders.Include(x => x.Products).Where(x => x.CustomerId == customerId).ToList();
+
         }
 
         private bool CheckProductsAvailability(ICollection<Product> products)

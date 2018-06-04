@@ -1,0 +1,92 @@
+﻿@using OnlineStore.Data;
+@using OnlineStore.DBServices;
+@using Resources = OnlineStore.Common.Properties;
+
+@model IEnumerable<OnlineStore.Data.Order>
+
+@{
+    ViewBag.Title = "Zamówienia";
+
+    ProductDBService productService = new ProductDBService();
+    ICollection<Product> products = productService.GetProductCollection();
+
+    
+}
+
+<h2 style="margin: 10px;">Twoje zamówienia</h2>
+
+<style>
+
+    th {
+        font-weight: bold;
+        font-size: 1vw;
+    }
+
+    td {
+        font-family: 'Courier New';
+        font-size: 1.5vw;
+    }
+
+    #totalPrice {
+        margin: 5px;
+        font-family: 'Courier New';
+        font-size: 1.5vw;
+        font-weight: bold;
+    }
+
+    #placeOrder {
+        margin-top: 15px;
+    }
+
+    .container {
+        background-color: #ecf0f1;
+    }
+</style>
+
+
+<p>_________________________________________</p>
+
+@{
+    if (Model != null && Model.Count() > 0)
+    {
+        foreach (var order in Model)
+        {
+
+            <h2 style="margin: 5px; font-family: 'Courier New'; font-size: 1.5vw;">Zamówienie nr. @order.Id</h2>
+
+            <table class="table container">
+                <tr>
+                    <th>
+                        @Html.DisplayName(Resources.Labels.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayName(Resources.Labels.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayName(Resources.Labels.Price)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @if (order.Products != null)
+                {
+                    foreach (var item in order.Products)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price) zł
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        }
+    }
+}
